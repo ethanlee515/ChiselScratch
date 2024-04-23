@@ -8,7 +8,9 @@ class MyModule(width: Int) extends Module {
     val out = Output(UInt(width.W))
   })
 
-  io.out := io.in
+  val delay = RegInit(UInt(width.W), 0.U)
+  delay := io.in
+  io.out := delay
 }
 
 object Hello {
