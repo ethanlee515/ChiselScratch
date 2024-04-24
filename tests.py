@@ -29,7 +29,6 @@ def printvals(vals):
 @cocotb.test()
 async def echo_test(dut):
     nregs = int(os.environ["NUMREG"])
-    print(f"nregs = {nregs}")
     clock = Clock(dut.clock, 10, units="us")
     cocotb.start_soon(clock.start(start_high=False))
     for i in range(15):

@@ -9,7 +9,7 @@ from cocotb.runner import get_runner
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        println("usage: ./main.py n")
+        print("usage: ./main.py n")
         exit(1)
     runner = get_runner("verilator")
     runner.build(verilog_sources=["./echo.sv"], hdl_toplevel="Echo")
