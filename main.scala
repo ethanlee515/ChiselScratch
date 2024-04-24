@@ -2,13 +2,13 @@ import chisel3._
 import circt.stage.ChiselStage
 import java.io._
 
-class Echo(width: Int) extends Module {
+class Echo(steps: Int) extends Module {
   val io = IO(new Bundle {
-    val fake_adc  = Input(UInt(width.W))
-    val fake_dac = Output(UInt(width.W))
+    val fake_adc  = Input(Vec(steps, UInt(8.W)))
+    val fake_dac = Output(Vec(steps, UInt(8.W)))
   })
 
-  val delay = RegInit(UInt(width.W), 0.U)
+  val delay = RegInit(VecInit(Seq.fill(steps)(0.U(8.W))))
   delay := io.fake_adc
   io.fake_dac := delay
 }
